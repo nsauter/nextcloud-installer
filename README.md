@@ -37,44 +37,44 @@ This installer will make your nextcloud data dir "/data"Â. I recommend to ount t
 
 1. Install git:
 
-	# apt update -y && apt install git -y
+    $ sudo apt update -y && apt install git -y
 
 2. Clone this repository:
 
-	# cd /root && git clone https://github.com/nsauter/nextcloud-installer.git
-	# cd nextcloud-installer
+    $ git clone https://github.com/nsauter/nextcloud-installer.git
+    $ cd nextcloud-installer
 
 3. Begin the installation:
 
-	# ./install.sh
+    $ sudo ./install.sh
 
 4. Enter the requested infos:
 
-	Please enter your e-mail address: admins_mail@demo.org
-	Please enter your servers FQDN (e.g. nexcloud.mydomain.net): nextcloud.demo.org
+    Please enter your e-mail address: admins_mail@demo.org
+    Please enter your servers FQDN (e.g. nexcloud.mydomain.net): nextcloud.demo.org
 
 5. Watch the installer doing the its thing:
 
-	Updating OS...
-	Installing needed packages...
-	Generating passwords...
-	Preparing database...
-	Generating PHP settings...
-	Downloading & installing latest nextcloud version...
-	Generating Nextcloud datadir and getting permissions right...
-	Generating apache configuration...
-	Generating SSl/TLS certificate...
+    Updating OS...
+    Installing needed packages...
+    Generating passwords...
+    Preparing database...
+    Generating PHP settings...
+    Downloading & installing latest nextcloud version...
+    Generating Nextcloud datadir and getting permissions right...
+    Generating apache configuration...
+    Generating SSl/TLS certificate...
 
-	###################### FINISHED INSTALLATION ######################
+    ###################### FINISHED INSTALLATION ######################
 
-	Now connect to "https://nextcloud.demo.org" to finish installation.
-
-	Nextcloud Data Dir:             /data
-	Nextcloud Database User:        nextcloud
-	Nextcloud Database Password:    Deity-Heyday*Witch
-
-	Database Root Password:         beefy!Bounty!nosy
-
-	ATTENTION: Make sure to store those passwords in a safe location.
-
-	###################################################################
+    Now connect to "https://nextcloud.demo.org" to finish installation.
+    
+    Nextcloud Data Dir:             /data
+    Nextcloud Database User:        nextcloud
+    Nextcloud Database Password:    Deity-Heyday*Witch
+    
+    Database Root Password:         beefy!Bounty!nosy
+    
+    ATTENTION: Make sure to store those passwords in a safe location.
+    
+    ###################################################################
