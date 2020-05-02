@@ -1,4 +1,6 @@
-#/bin/sh -eu
+#/bin/sh
+
+set -eu
 
 ### SOURCE FUNCTIONS ###
 source ./functions.sh
@@ -15,7 +17,7 @@ elif [ $OS = "Ubuntu" ]
 then
 	#If OS is Ubuntu add ppa
 	apt_get_quiet install software-properties-common certbot python3-certbot-apache -y
-	add-apt-repository ppa:ondrej/php -y
+	hide_output add-apt-repository ppa:ondrej/php -y
 else
 	echo "It seems like you are running a not supportet OS. Not going to install anything."
 	exit 1
@@ -30,7 +32,7 @@ read -p 'Please enter your servers FQDN (e.g. nexcloud.mydomain.net): ' SERVER_N
 
 echo "Updating OS..."
 apt_get_quiet update -y
-apt_get-quiet upgrade -y
+apt_get_quiet upgrade -y
 
 ### Installing needed Packages ###
 
@@ -46,7 +48,7 @@ DB_NEXTCLOUD=$(pwqgen)
 ### MYSQL COMMANDS ###
 
 echo "Preparing database..."
-myql --user=root <<_EOF_
+mysql --user=root <<_EOF_
 UPDATE mysql.user SET Password=PASSWORD('${DB_ROOT}') WHERE User='root';
 DELETE FROM mysql.user WHERE User='';
 DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
@@ -55,7 +57,7 @@ DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
 FLUSH PRIVILEGES;
 CREATE DATABASE nextcloud;
 CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY '${DB_NEXTCLOUD}';
-GRANT ALL ON nextcloud.* TO 'nextcloud'@'localhost' IDENTIFIED BY 'password_here' WITH GRANT OPTION;
+GRANT ALL ON nextcloud.* TO 'nextcloud'@'localhost' IDENTIFIED BY '${DB_NEXTCLOUD}' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 _EOF_
 
@@ -73,8 +75,8 @@ sed -i "s/post_max_filesize = 8M/post_max_filesize = 16G/g" /etc/php/7.3/apache2
 
 echo "Downloading & installing latest nextcloud version..."
 # Get latest zip, unzip and move to /var/www/
-wget https://download.nextcloud.com/server/releases/latest.zip -P /tmp/
-unzip /tmp/latest.zip
+hide_output wget https://download.nextcloud.com/server/releases/latest.zip -P /tmp/
+hide_output unzip /tmp/latest.zip
 mv /tmp/nextcloud /var/www/
 
 # Change permissions of nexcloud so that apache can use it
@@ -96,13 +98,13 @@ fi
 
 echo "Generating apache configuration..."
 # Move template nextcloud conf to apache dir
-mv templates/nextcloud.conf /etc/apache2/sites-available/nextcloud.conf
+cp templates/nextcloud.conf /etc/apache2/sites-available/nextcloud.conf
 
 # Change a few options and edit nexctloud.conf to fit for user
 sed -i "s/Options Indexes FollowSymLinks/Options FollowSymLinks/" /etc/apache2/apache2.conf
 sed -i "s/admin_template/${SERVER_ADMIN}/g" /etc/php/7.3/apache2/php.ini
 sed -i "s/name_template/${SERVER_NAME}/g" /etc/php/7.3/apache2/php.ini
-sed -i "s/alias_template/www.${SERVER_NAME} ${SERVER_ALIAS}/g" /etc/php/7.3/apache2/php.ini
+sed -i "s/alias_template/www.${SERVER_NAME}/g" /etc/php/7.3/apache2/php.ini
 
 # Enable Nexcloud Conf and Modules
 hide_output a2ensite nextcloud.conf
