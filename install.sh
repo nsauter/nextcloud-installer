@@ -121,7 +121,7 @@ hide_output systemctl restart apache2.service
 ### LETSENCRYPT CERTIFICATE ###
 
 echo "Generating SSl/TLS certificate..."
-hide_output certbot --apache --non-interactive --agree-tos --redirect -m ${SERVER_ADMIN} -d ${SERVER_NAME} -d www.${SERVER_NAME}
+hide_output certbot --apache --non-interactive --agree-tos --redirect -m ${SERVER_ADMIN} -d ${SERVER_NAME}
 
 
 ### PRINT PASSWORDS TO STDOUT ###
