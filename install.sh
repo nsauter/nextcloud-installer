@@ -76,7 +76,7 @@ sed -i "s/post_max_filesize = 8M/post_max_filesize = 16G/g" /etc/php/7.3/apache2
 echo "Downloading & installing latest nextcloud version..."
 # Get latest zip, unzip and move to /var/www/
 hide_output wget https://download.nextcloud.com/server/releases/latest.zip -P /tmp/
-hide_output unzip /tmp/latest.zip
+hide_output unzip /tmp/latest.zip -d /tmp
 mv /tmp/nextcloud /var/www/
 
 # Change permissions of nexcloud so that apache can use it
