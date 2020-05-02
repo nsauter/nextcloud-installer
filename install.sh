@@ -132,6 +132,7 @@ Now connect to "https://${SERVER_NAME}" to finish installation.
 
 Nextcloud Data Dir: 		/data
 Nextcloud Database User: 	nextcloud
+Nextcloud Database Name: 	nextcloud
 Nextcloud Database Password: 	${DB_NEXTCLOUD}
 
 Database Root Password:		${DB_ROOT}
