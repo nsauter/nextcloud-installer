@@ -102,9 +102,8 @@ cp templates/nextcloud.conf /etc/apache2/sites-available/nextcloud.conf
 
 # Change a few options and edit nexctloud.conf to fit for user
 sed -i "s/Options Indexes FollowSymLinks/Options FollowSymLinks/" /etc/apache2/apache2.conf
-sed -i "s/admin_template/${SERVER_ADMIN}/g" /etc/php/7.3/apache2/php.ini
-sed -i "s/name_template/${SERVER_NAME}/g" /etc/php/7.3/apache2/php.ini
-sed -i "s/alias_template/www.${SERVER_NAME}/g" /etc/php/7.3/apache2/php.ini
+sed -i "s/admin_template/${SERVER_ADMIN}/g" /etc/apache2/sites-available/nextcloud.conf
+sed -i "s/name_template/${SERVER_NAME}/g" /etc/apache2/sites-available/nextcloud.conf
 
 # Enable Nexcloud Conf and Modules
 hide_output a2ensite nextcloud.conf
