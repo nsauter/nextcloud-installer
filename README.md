@@ -21,8 +21,8 @@ This installer turns a fresh Ubuntu or Debian machine into a working nextcloud s
 
 The main components installed are:
 
-* ([apache](https://httpd.apache.org/)) Webserver with various PHP Modules.
-* ([Nextcloud](https://nextcloud.com/))
+* [apache](https://httpd.apache.org/) Webserver with various PHP Modules.
+* [Nextcloud](https://nextcloud.com/) Open-Source Cloud.
 
 Secured by:
 
@@ -33,7 +33,7 @@ For more information on how we handle your privacy, see the [security details pa
 Installation
 ------------
 
-This installer will make your nextcloud data dir `Â/dat`Â. I recommend to mout `/data`Â as own partition. If not the istaller will generate `/data` anyway.
+This installer will make your nextcloud data dir `Â/daa`Â. I recommend to ount thisÂ as own partitin. If this directory is not mounted it will be generated.
 
 1. Install git:
 
