@@ -33,7 +33,7 @@ For more information on how we handle your privacy, see the [security details pa
 Installation
 ------------
 
-This installer will make your nextcloud data dir "/data"Â. I recommend to ount thisÂ as own partitin. If this directory is not mounted it will be generated.
+This installer will make your nextcloud data dir `/data`Â. I recommend tomount thisÂ as own partitin. If this directory is not mounted it will be generate.
 
 1. Install git:
 
