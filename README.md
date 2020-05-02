@@ -37,24 +37,33 @@ This installer will make your nextcloud data dir "/data"Â. I recommend to ount t
 
 1. Install git:
 
+    ```bash
     $ sudo apt update -y && apt install git -y
+    ```
 
 2. Clone this repository:
 
+    ```bash
     $ git clone https://github.com/nsauter/nextcloud-installer.git
     $ cd nextcloud-installer
+    ```
 
 3. Begin the installation:
 
+    ```bash
     $ sudo ./install.sh
+    ```
 
 4. Enter the requested infos:
 
+    ```
     Please enter your e-mail address: admins_mail@demo.org
     Please enter your servers FQDN (e.g. nexcloud.mydomain.net): nextcloud.demo.org
+    ```
 
 5. Watch the installer doing the its thing:
 
+    ```
     Updating OS...
     Installing needed packages...
     Generating passwords...
@@ -78,3 +87,5 @@ This installer will make your nextcloud data dir "/data"Â. I recommend to ount t
     ATTENTION: Make sure to store those passwords in a safe location.
     
     ###################################################################
+    ```
+
